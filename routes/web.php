@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Work\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('dashboard');
+    });
+
+    Route::get('/task/index', [TaskController::class, 'index']);
+    Route::post('/task/index/create', [TaskController::class, 'create']);
 });
+
+require __DIR__.'/auth.php';
