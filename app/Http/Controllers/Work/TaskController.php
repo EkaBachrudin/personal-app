@@ -10,8 +10,16 @@ use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
+    private function deleteTaskFrom($id){
+        $taskFrom = TaskFrom::find($id);
+        return $taskFrom->delete();
+    }
+    
     public function index(){
-        return view('work.task.index');
+        $taskFroms = TaskFrom::latest()->get();
+        return view('work.task.index', compact(
+            'taskFroms',
+        ));
     }
 
     public function create(Request $request){
@@ -22,18 +30,74 @@ class TaskController extends Controller
         ]);
      
         if ($validator->validated()) {
-            $taskFrom = TaskFrom::create([
-                'name' => $request->fromTask,
-            ]);
+            $taskFrom = TaskFrom::where('name', $request->fromTask)->first();
 
-            $task = Task::create([
-                'task_from_id'  => $taskFrom->id,
-                'title'         => $request['title'],
-                'task'          => $request['task'],
-            ]);
+            if($taskFrom == null){
+                $taskFrom = TaskFrom::create([
+                    'name' => $request->fromTask,
+                ]);
+    
+                $task = Task::create([
+                    'task_from_id'  => $taskFrom->id,
+                    'title'         => $request['title'],
+                    'task'          => $request['task'],
+                ]);
+            }else{
+                $task = Task::create([
+                    'task_from_id'  => $taskFrom->id,
+                    'title'         => $request['title'],
+                    'task'          => $request['task'],
+                ]);
+            }
 
             return response()->json([
                 'success'=>'Create task success!.',
+                'taskFrom'=>$taskFrom,
+                'task'=>$task,
+            ]);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+    public function getData($id){
+        $task = Task::where('id', $id)->first();
+
+        return response()->json([
+            'task' =>  $task,
+            'taskFrom' => $task->taskFrom,
+        ]);
+    }
+
+    public function update($id, Request $request){
+        $validator = Validator::make($request->all(),[
+            'fromTask' => 'required',
+            'title' => 'required',
+            'task' => 'required',
+        ]);
+     
+        if ($validator->validated()) {
+            $taskFrom = TaskFrom::where('name', $request->fromTask)->first();
+
+            if($taskFrom == null){
+                $taskFrom = TaskFrom::create([
+                    'name' => $request->fromTask,
+                ]);
+    
+                $task = Task::where('id', $id)->update([
+                    'task_from_id'  => $taskFrom->id,
+                    'title'         => $request['title'],
+                    'task'          => $request['task'],
+                ]);
+            }else{
+                $task = Task::where('id', $id)->update([
+                    'task_from_id'  => $taskFrom->id,
+                    'title'         => $request['title'],
+                    'task'          => $request['task'],
+                ]);
+            }
+
+            return response()->json([
+                'success'=>'Task updated son of a bitch!.',
                 'taskFrom'=>$taskFrom,
                 'task'=>$task,
             ]);

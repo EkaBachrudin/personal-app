@@ -21,6 +21,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/task/index', [TaskController::class, 'index']);
     Route::post('/task/index/create', [TaskController::class, 'create']);
+    Route::get('/task/index/getData/{id}', [TaskController::class, 'getData']);
+    Route::post('/task/index/update/{id}', [TaskController::class, 'update']);
 });
 
 require __DIR__.'/auth.php';
