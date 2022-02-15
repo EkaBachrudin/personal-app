@@ -67,7 +67,7 @@
                                                 <i class="fas fa-edit text-pink" onclick="edit({{$task->id}})"></i>
                                             </div>
                                             <hr>
-                                            <textarea class="form-control" cols="30" rows="15" disabled> {{$task->task}} </textarea>
+                                            <textarea class="form-control" cols="30" rows="15" disabled>{{$task->task}}</textarea>
                                         </div>
                                     </div>
                                     @endforeach
