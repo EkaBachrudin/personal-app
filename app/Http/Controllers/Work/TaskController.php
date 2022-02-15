@@ -10,9 +10,13 @@ use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
-    private function deleteTaskFrom($id){
-        $taskFrom = TaskFrom::find($id);
-        return $taskFrom->delete();
+    private function deleteTaskFrom(){
+      $taskFrom = TaskFrom::get();
+      foreach($taskFrom as $data){
+        if($data->task->count() == 0){
+            $data->delete();
+        }
+      }
     }
     
     public function index(){
@@ -77,7 +81,6 @@ class TaskController extends Controller
      
         if ($validator->validated()) {
             $taskFrom = TaskFrom::where('name', $request->fromTask)->first();
-
             if($taskFrom == null){
                 $taskFrom = TaskFrom::create([
                     'name' => $request->fromTask,
@@ -95,7 +98,7 @@ class TaskController extends Controller
                     'task'          => $request['task'],
                 ]);
             }
-
+            $this->deleteTaskFrom();
             return response()->json([
                 'success'=>'Task updated son of a bitch!.',
                 'taskFrom'=>$taskFrom,
