@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
+    //Deleting task from 
     private function deleteTaskFrom(){
       $taskFrom = TaskFrom::get();
       foreach($taskFrom as $data){
