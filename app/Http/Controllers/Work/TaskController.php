@@ -108,4 +108,8 @@ class TaskController extends Controller
         }
         return response()->json(['error'=>$validator->errors()->all()]);
     }
+
+    public function taskHistory(){
+        return view('work.task.history');
+    }
 }
