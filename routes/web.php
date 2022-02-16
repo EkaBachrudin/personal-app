@@ -19,13 +19,13 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     });
 
+    //==========================WORK=========================================
     Route::get('/task/index', [TaskController::class, 'index']);
     Route::post('/task/index/create', [TaskController::class, 'create']);
     Route::get('/task/index/getData/{id}', [TaskController::class, 'getData']);
     Route::post('/task/index/update/{id}', [TaskController::class, 'update']);
+    Route::post('/task/index/completed/{id}', [TaskController::class, 'completed']);
     Route::get('/task/task-history', [TaskController::class, 'taskHistory']);
-
-
 });
 
 require __DIR__.'/auth.php';

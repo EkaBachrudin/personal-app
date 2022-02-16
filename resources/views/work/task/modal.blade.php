@@ -52,7 +52,7 @@
         </div>
         <div class="modal-footer d-flex justify-content-between">
           <div>
-            <button type="button" class="btn btn-pink" onclick="endTask()">Task Ended</button>
+            <button type="button" class="btn btn-pink" onclick="">Completed</button>
           </div>
           <div>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

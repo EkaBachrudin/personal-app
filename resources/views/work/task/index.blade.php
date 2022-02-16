@@ -59,7 +59,7 @@
                                     id="v-pills-{{$taskFrom->id}}" role="tabpanel"
                                     aria-labelledby="v-pills-{{$taskFrom->id}}-tab">
                                     @foreach ($taskFrom->task as $task)
-                                    <div class="card shadow task-element">
+                                    <div class="card shadow task-element" id="task-element{{$task->id}}">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between">
                                                 <h5>{{$task->title}}</h5>
@@ -131,6 +131,7 @@
                 $('#edit').find($('input[name="title"]')).val(data.task.title);
                 $('#edit').find($('textarea[name="task"]')).val(data.task.task);
                 $('#edit').find($('.btn-primary').attr('onclick', 'submitUpdate(' + data.task.id + ')'));
+                $('#edit').find($('.btn-pink').attr('onclick', 'completed(' + data.task.id + ')'));
                 $('#modalEdit').modal('show');
             });
     };
@@ -159,5 +160,21 @@
             alert("Request failed: " + textStatus);
         });
     };
+
+    function completed(id){
+        var request = $.ajax({
+            url: "/task/index/completed/" + id,
+            method: "POST",
+        });
+
+        request.done(function (data) {
+            alert(data.success);
+            location.reload();
+        });
+
+        request.fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
+        });
+    }
 </script>
 @endsection

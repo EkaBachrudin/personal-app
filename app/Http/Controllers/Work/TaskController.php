@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Work;
 use App\Http\Controllers\Controller;
 use App\Models\Work\Task;
 use App\Models\Work\TaskFrom;
+use App\Models\Work\TaskHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
-    //Deleting task from 
+    //deleting task from 
     private function deleteTaskFrom(){
       $taskFrom = TaskFrom::get();
       foreach($taskFrom as $data){
@@ -19,7 +20,8 @@ class TaskController extends Controller
         }
       }
     }
-    
+    //end deleting task from 
+
     public function index(){
         $taskFroms = TaskFrom::latest()->get();
         return view('work.task.index', compact(
@@ -107,6 +109,23 @@ class TaskController extends Controller
             ]);
         }
         return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+    public function completed($id){
+        $task = Task::where('id', $id)->first();
+
+        $history = TaskHistory::create([
+            'from' => $task->taskFrom->name,
+            'title' => $task->title,
+            'task'  => $task->task,
+        ]);
+
+        $task->delete();
+        $this->deleteTaskFrom();
+
+        return response()->json([
+            'success'=>'Task completed eka, you still the best on this class!.',
+        ]);
     }
 
     public function taskHistory(){
