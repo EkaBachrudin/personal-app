@@ -129,11 +129,6 @@ class TaskController extends Controller
     }
 
     public function taskHistory(Request $request){
-        
-        
-
-
-
         $search =  $request->search;
         if(!$search){
             $histories = TaskHistory::latest()->paginate('20');
@@ -145,6 +140,33 @@ class TaskController extends Controller
             ->paginate(20);
         }
         return view('work.task.history', compact('histories'));
+    }
 
+    public function restoreHistory($id){
+        $history = taskHistory::find($id);
+
+        $taskFrom = TaskFrom::where('name', $history->from)->first();
+
+            if($taskFrom == null){
+                $taskFrom = TaskFrom::create([
+                    'name' => $history->from,
+                ]);
+    
+                $task = Task::create([
+                    'task_from_id'  => $taskFrom->id,
+                    'title'         => $history['title'],
+                    'task'          => $history['task'],
+                ]);
+            }else{
+                $task = Task::create([
+                    'task_from_id'  => $taskFrom->id,
+                    'title'         => $history['title'],
+                    'task'          => $history['task'],
+                ]);
+            }
+
+            $history->delete();
+
+        return back();
     }
 }

@@ -102,7 +102,10 @@
                         <ul>
                             @foreach ($histories as $history)
                             <li>
-                                <span class="text-white px-3">{{$history->from}}</span>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-white px-3">{{$history->from}}</span>
+                                    <a href="/task/task-history/restored/{{$history->id}}"><i class="ti ti-arrow-forward-up text-white"></i></a>
+                                </div>
                                 <div class="content">
                                     <h3>{{$history->title}}</h3>
                                     <p>
