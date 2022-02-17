@@ -90,45 +90,32 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="timeline">
-                <ul>
-                    <li>
-                        <span class="text-white px-3">3rd January 2020</span>
-                        <div class="content">
-                            <h3>What Is Lorem Ipsum?</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                            </p>
+            <div class="card shadow">
+                <div class="card-body">
+                    <form action="/task/task-history">
+                        <div class="form-group">
+                            <input type="text" name="search" placeholder="find or search title task...!" class="form-control" autocomplete="off"/>
                         </div>
-                    </li>
-                    <li>
-                        <span>21st Jun 2019</span>
-                        <div class="content">
-                            <h3>What Is Lorem Ipsum?</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <span>15th April 2018</span>
-                        <div class="content">
-                            <h3>What Is Lorem Ipsum?</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <span>22nd Mars 2017</span>
-                        <div class="content">
-                            <h3>What Is Lorem Ipsum?</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                            </p>
-                        </div>
-                    </li>
-                </ul>
+                    </form>
+        
+                    <div class="timeline">
+                        <ul>
+                            @foreach ($histories as $history)
+                            <li>
+                                <span class="text-white px-3">{{$history->from}}</span>
+                                <div class="content">
+                                    <h3>{{$history->title}}</h3>
+                                    <p>
+                                        {{$history->task}}
+                                    </p>
+                                    <p><small>{{$history->created_at->format('d-m-Y')}}</small></p>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    {{ $histories->links() }}
+                </div>
             </div>
         </div>
     </div>

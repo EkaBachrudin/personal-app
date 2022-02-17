@@ -128,7 +128,23 @@ class TaskController extends Controller
         ]);
     }
 
-    public function taskHistory(){
-        return view('work.task.history');
+    public function taskHistory(Request $request){
+        
+        
+
+
+
+        $search =  $request->search;
+        if(!$search){
+            $histories = TaskHistory::latest()->paginate('20');
+        }
+        else{
+            $histories = TaskHistory::where(function ($query) use ($search){
+                $query->where('title', 'like', '%'.$search.'%');
+            })
+            ->paginate(20);
+        }
+        return view('work.task.history', compact('histories'));
+
     }
 }
