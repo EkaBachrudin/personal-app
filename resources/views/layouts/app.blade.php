@@ -45,6 +45,16 @@
                 </span>
             </a>
         </div>
+        <div class="border-end">
+                <ul class="nav nav-tabs menu-tab nav-justified" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#Main" role="tab" aria-selected="true">M<span>ain</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#Extra" role="tab" aria-selected="false">E<span>xtra</span></a>
+                    </li>
+                </ul>
+            </div>
         <!-- Tab panes -->
 
         <!--end logo-->
@@ -55,7 +65,7 @@
                     <ul class="navbar-nav tab-pane active" id="Main" role="tabpanel">
                         @include('layouts.navigation')
                     </ul>
-                    {{-- <ul class="navbar-nav tab-pane" id="Extra" role="tabpanel">
+                    <ul class="navbar-nav tab-pane" id="Extra" role="tabpanel">
                         <li>
                             <div class="update-msg text-center position-relative">
                                 <button type="button" class="btn-close position-absolute end-0 me-2"
@@ -67,7 +77,7 @@
                                     plan</a>
                             </div>
                         </li>
-                    </ul> --}}
+                    </ul>
                     <!--end navbar-nav--->
                 </div>
                 <!--end sidebarCollapse-->

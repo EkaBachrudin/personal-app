@@ -24,7 +24,7 @@
                 </div>
                 <h4 class="page-title">Task</h4>
                 <br>
-                <div class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#modalAdd"> Add task </div>
+                <div class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#modalAdd"> Add task <i class="ti ti-circle-plus"></i> </div>
             </div>
             <!--end page-title-box-->
         </div>
