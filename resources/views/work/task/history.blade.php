@@ -92,6 +92,12 @@
         <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-body">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-danger alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>    
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
                     <form action="/task/task-history">
                         <div class="form-group">
                             <input type="text" name="search" placeholder="find or search title task...!" class="form-control" autocomplete="off"/>
@@ -104,7 +110,7 @@
                             <li>
                                 <div class="d-flex justify-content-between">
                                     <span class="text-white px-3">{{$history->from}}</span>
-                                    <a href="/task/task-history/restored/{{$history->id}}"><i class="ti ti-arrow-forward-up text-white"></i></a>
+                                    <a href="/task/task-history/restored/{{$history->id}}" onclick="return confirm('are u sure wont to restore this task ? ')"><i class="ti ti-arrow-forward-up text-white"></i></a>
                                 </div>
                                 <div class="content">
                                     <h3>{{$history->title}}</h3>

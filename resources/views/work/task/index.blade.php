@@ -162,19 +162,22 @@
     };
 
     function completed(id){
-        var request = $.ajax({
-            url: "/task/index/completed/" + id,
-            method: "POST",
-        });
+        var  confirm= window.confirm('Sure wont to complete this task?..');
+        if(confirm == true){
+            var request = $.ajax({
+                url: "/task/index/completed/" + id,
+                method: "POST",
+            });
 
-        request.done(function (data) {
-            alert(data.success);
-            location.reload();
-        });
+            request.done(function (data) {
+                alert(data.success);
+                location.reload();
+            });
 
-        request.fail(function (jqXHR, textStatus) {
-            alert("Request failed: " + textStatus);
-        });
+            request.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
+        }
     }
 </script>
 @endsection

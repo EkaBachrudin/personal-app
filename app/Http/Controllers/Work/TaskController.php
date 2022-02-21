@@ -167,6 +167,6 @@ class TaskController extends Controller
 
             $history->delete();
 
-        return back();
+        return back()->with('success','Item restored successfully!');
     }
 }
