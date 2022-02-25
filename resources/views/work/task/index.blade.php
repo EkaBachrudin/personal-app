@@ -24,7 +24,10 @@
                 </div>
                 <h4 class="page-title">Task</h4>
                 <br>
-                <div class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#modalAdd"> Add task <i class="ti ti-circle-plus"></i> </div>
+                <div class="d-flex justify-content-between">
+                    <div class="btn btn-pink btn-sm" data-bs-toggle="modal" data-bs-target="#modalAdd"> Add task <i class="ti ti-circle-plus"></i> </div>
+                    <a href="/task/task-history" style="font-size: 20px"><i class="ti ti-history menu-icon"></i><span>History</span></a>
+                </div>
             </div>
             <!--end page-title-box-->
         </div>

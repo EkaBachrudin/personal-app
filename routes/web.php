@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Work\InstantTaskController;
 use App\Http\Controllers\Work\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/task/task-history', [TaskController::class, 'taskHistory']);
     Route::post('/task/task-history', [TaskController::class, 'taskHistory']);
     Route::get('/task/task-history/restored/{id}', [TaskController::class, 'restoreHistory']);
+
+    Route::get('/instant/index', [InstantTaskController::class, 'index']);
 });
 
 require __DIR__.'/auth.php';

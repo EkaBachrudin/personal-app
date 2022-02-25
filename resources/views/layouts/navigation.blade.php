@@ -118,6 +118,6 @@
                             <li class="menu-label mt-0 text-primary font-12 fw-semibold">Work<br><span class="font-10 text-secondary fw-normal">For Working Purpose</span></li>     
                             <li class="nav-item">
                                 <a class="nav-link" href="/task/index"><i class="ti ti-book menu-icon"></i><span>Task</span></a>
-                                <a class="nav-link" href="/task/task-history"><i class="ti ti-history menu-icon"></i><span>History</span></a>
-                                <a class="nav-link" href="#"><i class="ti ti-note menu-icon"></i><span>Note</span></a>
+                                <a class="nav-link" href="/instant/index"><i class="ti ti-checks menu-icon"></i><span>Daily / Instant Task</span></a>
+                                {{-- <a class="nav-link" href="#"><i class="ti ti-note menu-icon"></i><span>Note</span></a> --}}
                             </li>               
