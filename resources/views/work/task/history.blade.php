@@ -107,7 +107,7 @@
                     <div class="timeline">
                         <ul>
                             @foreach ($histories as $history)
-                            <li>
+                            <li class="shadow rounded border mb-2">
                                 <div class="d-flex justify-content-between">
                                     <span class="text-white px-3">{{$history->from}}</span>
                                     <a href="/task/task-history/restored/{{$history->id}}" onclick="return confirm('are u sure wont to restore this task ? ')"><i class="ti ti-arrow-forward-up text-white"></i></a>

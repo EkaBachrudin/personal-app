@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/task/task-history/restored/{id}', [TaskController::class, 'restoreHistory']);
 
     Route::get('/instant/index', [InstantTaskController::class, 'index']);
+    Route::POST('/instant/index', [InstantTaskController::class, 'create']);
+    Route::get('/instant/history', [InstantTaskController::class, 'history']);
 });
 
 require __DIR__.'/auth.php';

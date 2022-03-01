@@ -4,7 +4,7 @@
 @section('style')
     <style>
         .page-content-tab{
-            background-image: url('https://source.unsplash.com/1920x1080');
+            background-image: url('https://source.unsplash.com/1000x1000');
             background-size:     cover;   
             background-repeat:   no-repeat;
             background-position: center center; 
@@ -29,14 +29,17 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
       <div class="col-md-6" style="margin-top: 200px">
-        <a href="#" class="btn btn-sm btn-dark mb-3">History</a>
+        <a href="/instant/history" class="btn btn-sm btn-dark mb-3">History</a>
         <div class="glass shadow">
-            <div class="form-group">
-                <textarea type="text" name="task" class="form-control transparent-input" placeholder="text hire....." style="font-size: 30px"></textarea>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-dark btn-sm mt-3" value="Add task">
-            </div>
+            <form action="/instant/index" method="POST">
+                @csrf
+                <div class="form-group">
+                    <textarea type="text" name="task" class="form-control transparent-input" placeholder="type hire bitch....." style="font-size: 30px" required></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-dark btn-sm mt-3" value="Add task">
+                </div>
+            </form>
         </div>
       </div>
   </div>
