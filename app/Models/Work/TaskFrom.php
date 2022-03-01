@@ -13,6 +13,6 @@ class TaskFrom extends Model
 
     public function task()
     {
-        return $this->hasMany(Task::class, 'task_from_id');
+        return $this->hasMany(Task::class, 'task_from_id')->latest();
     }
 }
