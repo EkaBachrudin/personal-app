@@ -33,7 +33,7 @@
                 @foreach ($tasks as $task)
                     <div class="card p-2 shadow rounded border">
                         <div class="card-header">
-                            <h5>{{$task[1]->created_at->format('d-m-y')}}</h5>
+                            <h5>{{$task[0]->created_at->format('d-m-y')}}</h5>
                         </div>
                         @php $no=1 @endphp
                         <div class="card-body">
