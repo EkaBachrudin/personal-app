@@ -38,7 +38,12 @@
                         @php $no=1 @endphp
                         <div class="card-body">
                             @foreach ($task as $item)
-                                <dl> {{$item['task']}}</dl>
+                                <dl class="d-flex justify-content-between"> <span>{{$item['task']}}</span>
+                                     <span>
+                                        <i class="ti ti-edit text-info" onclick="edit({{$item['id']}})"></i>
+                                        <a href="#" onclick="return confirm('Are u sure delete this task?')"><i class="ti ti-trash text-danger"></i></a>
+                                     </span> 
+                                </dl>
                             @endforeach
                         </div>
                     </div>
@@ -54,6 +59,8 @@
 @section('javascript')
 
 <script>
-
+    function edit(id){
+        
+    }
 </script>
 @endsection
