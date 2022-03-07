@@ -38,10 +38,10 @@
                         @php $no=1 @endphp
                         <div class="card-body">
                             @foreach ($task as $item)
-                                <dl class="d-flex justify-content-between"> <span>{{$item['task']}}</span>
+                                <dl class="d-flex justify-content-between" id="instant{{$item['id']}}"> <span>{{$item['task']}}</span>
                                      <span>
                                         <i class="ti ti-edit text-info" onclick="edit({{$item['id']}})"></i>
-                                        <a href="#" onclick="return confirm('Are u sure delete this task?')"><i class="ti ti-trash text-danger"></i></a>
+                                        <i class="ti ti-trash text-danger" onclick="remove({{$item['id']}})"></i>
                                      </span> 
                                 </dl>
                             @endforeach
@@ -65,12 +65,12 @@
         <div class="modal-body" id="edit">
           <div class="form-group">
               <label for="task">task detail</label>
-              <input type="text" name="task" id="task" class="form-control">
+              <input type="text" name="task" id="task" class="form-control" required>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
+          <button type="button" class="btn btn-primary" onclick="">Understood</button>
         </div>
       </div>
     </div>
@@ -81,6 +81,12 @@
 @section('javascript')
 
 <script>
+     $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     function edit(id){
         $.ajax({
                 method: "GET",
@@ -90,7 +96,42 @@
                 var task = data.task;
                 $('#edit').find($('input[name="task"]')).val(task.task);
                 $('#modal').modal('show');
+                $('#edit').find($('.btn-primary').attr('onclick', 'update('+task.id+')'));
             });
+    }
+
+    function remove(id){
+        let text = "You sure";
+        if (confirm(text) == true) {
+            $.ajax({
+                method: "DELETE",
+                url: "/instant/history/delete/" + id,
+            })
+            .done(function (data) {
+                var success = data.success;
+                $('#instant'+id).remove();
+                alert(success);
+            });
+        }
+    }
+
+    function update(id){
+        var taskFrom = $('#edit').find($('input[name="task"]')).val();
+        var request = $.ajax({
+        method: "PUT",
+        url: "/instant/history/update/"+id,
+        data: {
+                task: taskFrom,
+            },
+        })
+        request.done(function( data ) {
+            var task = data.task;
+            $('#instant'+id).find($('span:first-child')).text(task);
+            alert('success updated !');
+        });
+        request.fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
+        });
     }
 </script>
 @endsection

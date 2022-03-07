@@ -37,4 +37,21 @@ class InstantTaskController extends Controller
             'task'=> $task,
         ]);
     }
+
+    public function deleteInstantHistory($id){
+        $task = InstantTask::find($id);
+        $task->delete();
+        return response()->json([
+            'success'=> 'success delete instant task',
+        ]);
+    }
+
+    public function update($id, Request $request){
+        $task = InstantTask::where('id', $id)->update([
+            'task'  => $request['task'],
+        ]);
+        return response()->json([
+            'task'=> $request['task'],
+        ]);
+    }
 }

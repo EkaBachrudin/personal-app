@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::POST('/instant/index', [InstantTaskController::class, 'create']);
     Route::get('/instant/history', [InstantTaskController::class, 'history']);
     Route::get('/instant/history/getData/{id}', [InstantTaskController::class, 'getData']);
+    Route::delete('/instant/history/delete/{id}', [InstantTaskController::class, 'deleteInstantHistory']);
+    Route::put('/instant/history/update/{id}', [InstantTaskController::class, 'update']);
 });
 
 require __DIR__.'/auth.php';
