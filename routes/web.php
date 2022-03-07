@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/instant/index', [InstantTaskController::class, 'index']);
     Route::POST('/instant/index', [InstantTaskController::class, 'create']);
     Route::get('/instant/history', [InstantTaskController::class, 'history']);
+    Route::get('/instant/history/getData/{id}', [InstantTaskController::class, 'getData']);
 });
 
 require __DIR__.'/auth.php';

@@ -19,14 +19,22 @@ class InstantTaskController extends Controller
         return back();
     }
 
+    //HISTORY=================================================
     public function history(){
        $tasks = InstantTask::latest()->get()->groupBy(function($item)
        {
          return $item->created_at->format('d-M-y');
        });
-    //    dd($tasks);
+
         return view('work.instant.history', compact(
             'tasks', 
         ));
+    }
+
+    public function getData($id){
+        $task = InstantTask::find($id);
+        return response()->json([
+            'task'=> $task,
+        ]);
     }
 }
