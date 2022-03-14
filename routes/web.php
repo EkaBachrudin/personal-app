@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Work\InstantTaskController;
+use App\Http\Controllers\Work\NoteWorkController;
 use App\Http\Controllers\Work\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/instant/history/getData/{id}', [InstantTaskController::class, 'getData']);
     Route::delete('/instant/history/delete/{id}', [InstantTaskController::class, 'deleteInstantHistory']);
     Route::put('/instant/history/update/{id}', [InstantTaskController::class, 'update']);
+
+    Route::get('/note/index', [NoteWorkController::class, 'index']);
 });
 
 require __DIR__.'/auth.php';

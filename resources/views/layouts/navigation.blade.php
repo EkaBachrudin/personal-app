@@ -119,5 +119,5 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/task/index"><i class="ti ti-book menu-icon"></i><span>Task</span></a>
                                 <a class="nav-link" href="/instant/index"><i class="ti ti-checks menu-icon"></i><span>Daily / Instant Task</span></a>
-                                {{-- <a class="nav-link" href="#"><i class="ti ti-note menu-icon"></i><span>Note</span></a> --}}
+                                <a class="nav-link" href="/note/index"><i class="ti ti-note menu-icon"></i><span>Note</span></a>
                             </li>               
