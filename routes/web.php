@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/instant/history/update/{id}', [InstantTaskController::class, 'update']);
 
     Route::get('/note/index', [NoteWorkController::class, 'index']);
+    Route::get('/note/index/create', [NoteWorkController::class, 'create']);
 });
 
 require __DIR__.'/auth.php';
