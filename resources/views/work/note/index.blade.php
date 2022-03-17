@@ -47,6 +47,7 @@
                             <tr>
                                 <th> Title </th>
                                 <th> Date note </th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,7 @@
                                 <tr>
                                     <td> {{$note->title}} </td>
                                     <td> {{$note->created_at}} </td>
+                                    <td> <i class="ti ti-eye hover"></i> </td>
                                 </tr>
                             @endforeach
                         </tbody>
