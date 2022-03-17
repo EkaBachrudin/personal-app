@@ -26,4 +26,30 @@ class NoteWorkController extends Controller
 
         return back();
     }
+
+    public function detail($id){
+        $note = NoteWork::find($id);
+        return view('work.note.detail', compact('note'));
+    }
+
+    public function getData($id){
+        $note = NoteWork::find($id);
+        return response()->json([
+            'note' => $note,
+        ]);
+    }
+
+    public function update(Request $request, $id){
+        $validated = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $note = NoteWork::find($id)->update([
+            'title' => $validated['title'],
+            'body'  => $validated['body'],
+        ]);
+
+        return back();
+    }
 }

@@ -55,7 +55,7 @@
                                 <tr>
                                     <td> {{$note->title}} </td>
                                     <td> {{$note->created_at}} </td>
-                                    <td> <i class="ti ti-eye hover"></i> </td>
+                                    <td> <a href="/note/detail/{{$note->id}}" class="ti ti-eye hover" style="font-size: 30px"></a> </td>
                                 </tr>
                             @endforeach
                         </tbody>
