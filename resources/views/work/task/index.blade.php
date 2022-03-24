@@ -134,7 +134,8 @@
                 $('#edit').find($('input[name="title"]')).val(data.task.title);
                 $('#edit').find($('textarea[name="task"]')).val(data.task.task);
                 $('#edit').find($('.btn-primary').attr('onclick', 'submitUpdate(' + data.task.id + ')'));
-                $('#edit').find($('.btn-pink').attr('onclick', 'completed(' + data.task.id + ')'));
+                $('#edit').find($('.ti-checkbox').attr('onclick', 'completed(' + data.task.id + ')'));
+                $('#edit').find($('.ti-trash-off').attr('onclick', 'remove(' + data.task.id + ')'));
                 $('#modalEdit').modal('show');
             });
     };
@@ -175,6 +176,26 @@
             request.done(function (data) {
                 alert(data.success);
                 location.reload();
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
+        }
+    };
+
+    function remove(id){
+        var  confirm= window.confirm('Sure wont to delete this task?..');
+        if(confirm == true){
+            var request = $.ajax({
+                url: "/task/index/remove/" + id,
+                method: "POST",
+            });
+
+            request.done(function (data) {
+                alert(data.success);
+                $('#task-element'+id).remove();
+                $('#modalEdit').modal('hide');
             });
 
             request.fail(function (jqXHR, textStatus) {

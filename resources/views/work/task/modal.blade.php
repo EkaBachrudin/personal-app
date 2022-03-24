@@ -52,7 +52,8 @@
         </div>
         <div class="modal-footer d-flex justify-content-between">
           <div>
-            <button type="button" class="btn btn-pink" onclick="">Completed</button>
+            <a href="#" class="ti ti-checkbox text-success" style="font-size: 30px" onclick=""></a>
+            <a href="#" class="ti ti-trash-off text-danger" style="font-size: 30px" onclick=""></a>
           </div>
           <div>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

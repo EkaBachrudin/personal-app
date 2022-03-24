@@ -128,6 +128,19 @@ class TaskController extends Controller
         ]);
     }
 
+    public function delete($id){
+        $task = Task::where('id', $id)->first();
+
+        $task->delete();
+        $this->deleteTaskFrom();
+
+        return response()->json([
+            'success'=>'Task has been deleted',
+        ]);
+    }
+
+    // HISTORY Section
+
     public function taskHistory(Request $request){
         $search =  $request->search;
         if(!$search){

@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/task/index/getData/{id}', [TaskController::class, 'getData']);
     Route::post('/task/index/update/{id}', [TaskController::class, 'update']);
     Route::post('/task/index/completed/{id}', [TaskController::class, 'completed']);
+    Route::post('/task/index/remove/{id}', [TaskController::class, 'delete']);
     Route::get('/task/task-history', [TaskController::class, 'taskHistory']);
     Route::post('/task/task-history', [TaskController::class, 'taskHistory']);
     Route::get('/task/task-history/restored/{id}', [TaskController::class, 'restoreHistory']);
