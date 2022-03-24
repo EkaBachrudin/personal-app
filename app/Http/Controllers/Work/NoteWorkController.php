@@ -8,8 +8,20 @@ use Illuminate\Http\Request;
 
 class NoteWorkController extends Controller
 {
-    public function index(){
-        $notes = NoteWork::latest()->get();
+    public function index(Request $request){
+
+        $search =  $request->search;
+        if(!$search){
+            $notes = NoteWork::latest()->paginate(50);
+        }
+        else{
+            $notes = NoteWork::where(function ($query) use ($search){
+                $query->where('title', 'like', '%'.$search.'%');
+            })
+            ->paginate(50);
+        }
+
+
         return view('work.note.index', compact('notes'));
     }
     

@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow">
-                <div class="card-body">
+                <div class="card-body p-4">
                     <h2 class="d-inline-block">{{$note->title}}</h2>
                     <div class="btn btn-pink" style="float: right" onclick="edit({{$note->id}})">Edit note</div>
                     <hr>

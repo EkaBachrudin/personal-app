@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item active"><a href="#"> Note </a></li>
                     </ol>
                 </div>
-                <h4 class="page-title">Note</h4>
+                <h4 class="page-title">Work notes</h4>
                 <br>
                 <div class="d-flex justify-content-between">
                     {{-- <div class="btn btn-pink btn-sm" data-bs-toggle="modal" data-bs-target="#modalAdd"> Add Note <i class="ti ti-circle-plus"></i> </div>
@@ -31,6 +31,17 @@
         <!--end col-->
     </div>
     <!-- end page title end breadcrumb -->
+
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#">
+                <div class="input-group mb-3 ml-4">
+                    <button class="btn btn-secondary" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
+                    <input type="text" class="form-control" name="search" placeholder="Search notes" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-12">
