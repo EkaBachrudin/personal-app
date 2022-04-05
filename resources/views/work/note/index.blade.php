@@ -3,7 +3,38 @@
 @section('style')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
+    .search-container{
+    width: 490px;
+    display: block;
+    margin: 0 auto;
+    }
 
+    input#search-bar{
+    margin: 0 auto;
+    width: 100%;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 1rem;
+    border: 1px solid #D0CFCE;
+    outline: none;
+    &:focus{
+        border: 1px solid #008ABF;
+        transition: 0.35s ease;
+        color: #008ABF;
+        &::-webkit-input-placeholder{
+        transition: opacity 0.45s ease; 
+        opacity: 0;
+        }
+        &::-moz-placeholder {
+        transition: opacity 0.45s ease; 
+        opacity: 0;
+        }
+        &:-ms-placeholder {
+        transition: opacity 0.45s ease; 
+        opacity: 0;
+        }    
+    }
+    }
 </style>
 @endsection
 @section('content')
@@ -36,8 +67,7 @@
         <div class="col-md-6">
             <form action="#">
                 <div class="input-group mb-3 ml-4">
-                    <button class="btn btn-secondary" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
-                    <input type="text" class="form-control" name="search" placeholder="Search notes" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <input type="text" id="search-bar" name="search" placeholder="Search notes..." autocomplete="off">
                 </div>
             </form>
         </div>
@@ -57,7 +87,7 @@
                         <thead>
                             <tr>
                                 <th> Title </th>
-                                <th> Date note </th>
+                                <th> Date <small>(latest update)</small> </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -65,7 +95,7 @@
                             @foreach ($notes as $note)
                                 <tr>
                                     <td> {{$note->title}} </td>
-                                    <td> {{$note->created_at}} </td>
+                                    <td> {{$note->updated_at}} </td>
                                     <td> <a href="/note/detail/{{$note->id}}" class="ti ti-eye hover" style="font-size: 30px"></a> </td>
                                 </tr>
                             @endforeach

@@ -12,7 +12,7 @@ class NoteWorkController extends Controller
 
         $search =  $request->search;
         if(!$search){
-            $notes = NoteWork::latest()->paginate(50);
+            $notes = NoteWork::latest("updated_at")->paginate(50);
         }
         else{
             $notes = NoteWork::where(function ($query) use ($search){
