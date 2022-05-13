@@ -136,10 +136,9 @@
             var note = data.note; 
             var errors = data.errors;
             if(note){
-                alert('Success');
                 $('#content-title').html(note.title);
                 $('#content-body').html(note.body);
-                alert(note.title);
+                alert('Success');
             }else if(errors){
                 if(errors.title){
                     $('#editNote').find($('#error1')).html(errors.title);

@@ -94,7 +94,7 @@
                         <tbody>
                             @foreach ($notes as $note)
                                 <tr>
-                                    <td> {{$note->title}} </td>
+                                    <td> <a href="/note/detail/{{$note->id}}">{{$note->title}}</a> </td>
                                     <td> {{$note->updated_at}} </td>
                                     <td> <a href="/note/detail/{{$note->id}}" class="ti ti-eye hover" style="font-size: 30px"></a> </td>
                                 </tr>
