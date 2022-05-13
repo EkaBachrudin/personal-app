@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/note/index/create', [NoteWorkController::class, 'create']);
     Route::get('/note/detail/{id}', [NoteWorkController::class, 'detail']);
     Route::get('/note/detail/getData/{id}', [NoteWorkController::class, 'getData']);
-    Route::get('/note/detail/update/{id}', [NoteWorkController::class, 'update']);
+    Route::post('/note/detail/update/{id}', [NoteWorkController::class, 'update']);
 });
 
 require __DIR__.'/auth.php';

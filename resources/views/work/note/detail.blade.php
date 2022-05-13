@@ -37,10 +37,14 @@
         <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-body p-4">
-                    <h2 class="d-inline-block">{{$note->title}}</h2>
+                    <h2 class="d-inline-block" id="content-title">
+                        {{$note->title}}
+                    </h2>
                     <div class="btn btn-pink" style="float: right" onclick="edit({{$note->id}})">Edit note</div>
                     <hr>
-                    {!!$note->body!!}
+                    <div id="content-body">
+                        {!!$note->body!!}
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,15 +67,18 @@
                         @endforeach
                     </ul>
             @endif
-            <form id="editNote" action="/note/detail/update/{{$note->id}}">
+            {{-- <form id="editNote" action="/note/detail/update/{{$note->id}}"> --}}
+            <form id="editNote">
                 <div class="form-group">
                     <input type="text" name="title" id="title" value="{{old('title')}}" class="form-control" placeholder="title hire...">
+                    <strong class="text-danger" id="error1"></strong>
                 </div>
                 <br>
-                <textarea id="basic-conf" name="body" placeholder="note hire ...">{{old('body')}}</textarea>
+                <textarea id="basic-conf" class="form-control" name="body" placeholder="note hire ...">{{old('body')}}</textarea>
+                <strong class="text-danger" id="error2"></strong>
                 <div class="form-group mt-3">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="">Save changes</button>
                   </div>
             </form>  
         </div>
@@ -85,6 +92,7 @@
 @section('javascript')
     <script src="{{asset('plugins/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('pages/form-editor.init.js')}}"></script>
+    <script src="{{asset('pages/sweet-alert.init.js')}}"></script>
 
 <script>
     $.ajaxSetup({
@@ -103,7 +111,44 @@
             var note = data.note; //TRUE
             $('#editNote').find($('input[name="title"]')).val(note.title);
             tinyMCE.activeEditor.setContent(note.body);
+            $('#editNote').find($('.btn-primary')).attr('onclick', 'update('+id+')');
             $('#modalEdit').modal('show');
+        });
+        
+        request.fail(function( jqXHR, textStatus ) {
+            alert( "Request failed: " + textStatus );
+        });
+    }
+
+    function update(id){
+        $('#editNote').find($('#error1')).empty();
+        $('#editNote').find($('#error2')).empty();
+        var request = $.ajax({
+        url: "/note/detail/update/"+id,
+        method: "POST",
+        data: {
+                title: $('#editNote').find($('input[name="title"]')).val(), 
+                body: tinyMCE.activeEditor.getContent()
+              },
+        });
+        
+        request.done(function( data ) {
+            var note = data.note; 
+            var errors = data.errors;
+            if(note){
+                alert('Success');
+                $('#content-title').html(note.title);
+                $('#content-body').html(note.body);
+                alert(note.title);
+            }else if(errors){
+                if(errors.title){
+                    $('#editNote').find($('#error1')).html(errors.title);
+                }
+                if(errors.body){
+                    $('#editNote').find($('#error2')).html(errors.body);
+                }
+            }
+            
         });
         
         request.fail(function( jqXHR, textStatus ) {

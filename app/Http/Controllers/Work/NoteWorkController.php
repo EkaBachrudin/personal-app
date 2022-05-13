@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Work;
 use App\Http\Controllers\Controller;
 use App\Models\Work\NoteWork;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class NoteWorkController extends Controller
 {
@@ -52,16 +53,27 @@ class NoteWorkController extends Controller
     }
 
     public function update(Request $request, $id){
-        $validated = $request->validate([
-            'title' => 'required',
-            'body' => 'required',
+        $validator = Validator::make($request->all(), [
+                'title' => 'required',
+                'body' => 'required'
         ]);
 
-        $note = NoteWork::find($id)->update([
-            'title' => $validated['title'],
-            'body'  => $validated['body'],
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        }
+
+        NoteWork::find($id)->update([
+            'title' => $request['title'],
+            'body'  => $request['body'],
         ]);
 
-        return back();
+        $note = collect([
+            'title' => $request['title'],
+            'body'  => $request['body'],
+        ]);
+        
+        return response()->json([
+            'note' => $note,
+        ]);
     }
 }
