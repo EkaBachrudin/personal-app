@@ -70,6 +70,9 @@ class NoteWorkController extends Controller
         $note = collect([
             'title' => $request['title'],
             'body'  => $request['body'],
+
+
+            
         ]);
         
         return response()->json([
