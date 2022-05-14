@@ -14,15 +14,6 @@
     <link href="{{asset('css/app.min.css')}}" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     @yield('style')
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHKK4HJCGH"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-EHKK4HJCGH');
-    </script>
 </head>
 
 <body id="body" class="dark-sidebar">
