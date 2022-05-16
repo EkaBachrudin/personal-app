@@ -12,6 +12,7 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/icons.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/app.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/mycss.css')}}" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     @yield('style')
 </head>
@@ -23,11 +24,12 @@
         <div class="brand">
             <a href="index.html" class="logo">
                 <span>
-                    <img src="{{asset('images/logo-sm.png')}}" alt="logo-small" class="logo-sm">
+                    <h1 class="text-white">EKA' APP</h1>
+                    {{-- <img src="{{asset('images/logo-sm.png')}}" alt="logo-small" class="logo-sm"> --}}
                 </span>
                 <span>
-                    <img src="{{asset('images/logo.png')}}" alt="logo-large" class="logo-lg logo-light">
-                    <img src="{{asset('images/logo-dark.png')}}" alt="logo-large" class="logo-lg logo-dark">
+                    {{-- <img src="{{asset('images/logo.png')}}" alt="logo-large" class="logo-lg logo-light"> --}}
+                    {{-- <img src="{{asset('images/logo-dark.png')}}" alt="logo-large" class="logo-lg logo-dark"> --}}
                 </span>
             </a>
         </div>

@@ -91,7 +91,7 @@
     </div>
 </nav> --}}
 
-                        <li class="menu-label mt-0 text-primary font-12 fw-semibold">PERSONAL<br><span class="font-10 text-secondary fw-normal">Personal Section</span></li>                    
+                        {{-- <li class="menu-label mt-0 text-primary font-12 fw-semibold">PERSONAL<br><span class="font-10 text-secondary fw-normal">Personal Section</span></li>                    
                             <li class="nav-item">
                                 <a class="nav-link" href="/"><i class="ti ti-book menu-icon text-danger"></i><span>Dashboard</span></a>
                             </li>
@@ -114,7 +114,7 @@
                                         </li><!--end nav-item-->
                                     </ul><!--end nav-->
                                 </div><!--end sidebarAnalytics-->
-                            </li>
+                            </li> --}}
                             <li class="menu-label mt-0 text-primary font-12 fw-semibold">Work<br><span class="font-10 text-secondary fw-normal">For Working Purpose</span></li>     
                             <li class="nav-item">
                                 <a class="nav-link" href="/task/index"><i class="ti ti-book menu-icon"></i><span>Task</span></a>
