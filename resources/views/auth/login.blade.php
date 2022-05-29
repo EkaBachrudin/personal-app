@@ -252,6 +252,11 @@
             </svg><span class="hidden">Password</span></label>
           <input id="login__password" type="password" name="password" class="form__input" placeholder="Password">
         </div>
+
+        <div class="form__field">
+            <input type="checkbox" name="remember" value="1" style="margin-top: 4.5px">
+            <span style="color: rgb(105, 105, 105); margin-left: 10px">Remember me</span></label>
+        </div>
   
         <div class="form__field">
           <input type="submit" value="Sign In">
