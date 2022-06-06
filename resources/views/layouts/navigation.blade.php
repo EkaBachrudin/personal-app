@@ -115,6 +115,10 @@
                                     </ul><!--end nav-->
                                 </div><!--end sidebarAnalytics-->
                             </li> --}}
+                            <li class="menu-label mt-0 text-primary font-12 fw-semibold">Personal<br><span class="font-10 text-secondary fw-normal">For my personal Purpose</span></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/personal/note"><i class="ti ti-book menu-icon"></i><span>Note</span></a>
+                            </li>       
                             <li class="menu-label mt-0 text-primary font-12 fw-semibold">Work<br><span class="font-10 text-secondary fw-normal">For Working Purpose</span></li>     
                             <li class="nav-item">
                                 <a class="nav-link" href="/task/index"><i class="ti ti-book menu-icon"></i><span>Task</span></a>

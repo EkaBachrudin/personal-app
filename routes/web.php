@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Personal\PersonalNoteController;
 use App\Http\Controllers\Work\InstantTaskController;
 use App\Http\Controllers\Work\NoteWorkController;
 use App\Http\Controllers\Work\TaskController;
@@ -20,6 +21,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('dashboard');
     });
+
+    //==========================personal=====================================
+    Route::get('/personal/note/index', [PersonalNoteController::class, 'index']);
+
 
     //==========================WORK=========================================
     Route::get('/task/index', [TaskController::class, 'index']);
